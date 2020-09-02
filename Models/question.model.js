@@ -10,6 +10,12 @@ const questionSchema = new Schema({
     required: true,
     max: 1000,
   },
+  upVote: {
+    type: Number,
+  },
+  downVote: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model("question", questionSchema);
