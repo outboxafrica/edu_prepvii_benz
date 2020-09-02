@@ -2,6 +2,7 @@
 const express = require("express");
 const router = express.Router();
 
+const userController = require("../Controllers/user.controller");
 // test route
 router.get("/test", (req, res) => {
   res.send(`Hello from test Route`);
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
 });
 
 //create User
-
+router.post("/create", userController.createUser);
 //delete user by Id
 
 //update User by Id
