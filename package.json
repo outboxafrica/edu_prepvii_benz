@@ -2,19 +2,37 @@
   "name": "edu-api",
   "version": "1.0.0",
   "description": "EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kallyas/https-github.com-outboxafrica-edu_prepvii_benz.git"
+    "url": "git+https://github.com/outboxafrica/edu_prepvii_benz.git"
   },
   "keywords": [],
-  "author": "",
+  "authors": [
+    "Ahabwe Diphan",
+    "Tumuhirwe Iden",
+    "Aguti Jane",
+    "ssendi samuel",
+    "amumpaire isaac",
+    "sarah Joy"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kallyas/https-github.com-outboxafrica-edu_prepvii_benz/issues"
+    "url": "https://github.com/outboxafrica/edu_prepvii_benz/issues"
   },
-  "homepage": "https://github.com/kallyas/https-github.com-outboxafrica-edu_prepvii_benz#readme"
+  "homepage": "https://github.com/outboxafrica/edu_prepvii_benz#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "mongoose": "^5.10.2",
+    "nodemon": "^2.0.4"
+  }
 }
