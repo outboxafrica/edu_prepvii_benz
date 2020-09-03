@@ -21,7 +21,9 @@ router.post("/user/create", userController.createUser);
 //delete user by Id
 
 //update User by Id
-
+router.get("/user/create", (req, res) => {
+  res.send("/user/create");
+});
 // view user
 
 //login
