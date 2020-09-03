@@ -1,0 +1,179 @@
+header {
+  position: absolute;
+  width: 1364px;
+  height: 66px;
+  left: 0px;
+  top: 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.logo {
+  position: absolute;
+  width: 120px;
+  height: 33px;
+  left: 160px;
+  top: 14px;
+  background: #fcfcfc;
+}
+
+.search {
+  position: absolute;
+  width: 364px;
+  height: 33px;
+  left: 500px;
+  top: 14px;
+  background: #f3f3f3;
+  border-radius: 5px;
+}
+
+.fa-bell {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 1120px;
+  top: 20px;
+  color: rgb(206, 32, 32);
+  font-size: 60px;
+}
+
+.user-img {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 1168px;
+  top: 17px;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+.container {
+  position: absolute;
+  width: 1364px;
+  height: 694px;
+  left: 0px;
+  top: 66px;
+}
+
+.side-bar {
+  position: absolute;
+  width: 300px;
+  height: 660px;
+  left: 1000px;
+  top: 40px;
+}
+
+.nav {
+  position: absolute;
+  width: 242px;
+  height: 200px;
+  left: 140px;
+  top: 34px;
+}
+
+.list-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 190px;
+  height: 28px;
+  left: 26px;
+  top: 33px;
+  color: #3d5af1;
+  list-style: none;
+  text-align: center;
+  background-color: #e8ebfb;
+}
+
+.fa-home {
+  padding-left: 15px;
+}
+
+.active {
+  border-left: 10px solid #3d5af1;
+}
+
+li {
+  margin: 5px;
+}
+
+.qn-body-container {
+  position: absolute;
+  width: 590px;
+  height: 660px;
+  left: 400px;
+  top: 40px;
+}
+
+.question {
+  position: absolute;
+  width: 522px;
+  height: 200px;
+  left: 20px;
+  top: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.qn-title {
+  position: absolute;
+  height: 27px;
+  left: 40px;
+  top: 8px;
+}
+
+.qn-body {
+  position: absolute;
+  width: 460px;
+  height: 120px;
+  left: 40px;
+  top: 40px;
+  padding-top: 15px;
+}
+
+.qn-footer {
+  position: absolute;
+  width: 460px;
+  height: 26px;
+  left: 40px;
+  top: 174px;
+}
+
+.qn-footer img {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  left: 3px;
+  top: 110px;
+  border-radius: 50%;
+}
+
+.btn-start {
+  position: absolute;
+  width: 186px;
+  height: 36px;
+  left: 8px;
+  top: 7px;
+  color: white;
+  font-size: 20px;
+  outline: none;
+  background: #3853e1;
+  border-radius: 5px;
+}
+
+.top-users {
+  position: absolute;
+  width: 181px;
+  left: 20px;
+  top: 60px;
+}
+
+.user {
+  position: absolute;
+  width: 181px;
+  height: 28px;
+  left: 0px;
+  top: 50px;
+}
+
+.user img {
+  border-radius: 50%;
+  width: 18px;
+}

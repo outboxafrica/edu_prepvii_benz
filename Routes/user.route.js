@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 });
 
 //create User
-router.post("/create", userController.createUser);
+router.post("/user/create", userController.createUser);
 //delete user by Id
 
 //update User by Id
@@ -25,6 +25,6 @@ router.post("/create", userController.createUser);
 // view user
 
 //login
-router.post('/login', userController.LogIn)
+router.post("/login", userController.LogIn);
 
 module.exports = router;

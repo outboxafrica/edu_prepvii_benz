@@ -3,7 +3,6 @@ const router = express.Router();
 
 const answerController = require("../Controllers/answer.controller");
 
-router.post('/answer', answerController.createAns)
+router.post("/answer/create", answerController.createAns);
 
-
-module.exports = router
+module.exports = router;
