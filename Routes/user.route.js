@@ -5,25 +5,18 @@ const router = express.Router();
 const userController = require("../Controllers/user.controller");
 // test route
 router.get("/test", (req, res) => {
-  res.send(`Hello from test Route`);
+  res.render("index");
 });
 
-router.get("/", (req, res) => {
-  res.json({
-    name: "edu api",
-    version: "1.0.0",
-    author: "team-benz",
-  });
-});
-
+//get all users
+router.get("/users", userController.getUsers);
 //create User
 router.post("/user/create", userController.createUser);
 //delete user by Id
-
+router.delete("/user/:id/delete", userController.deleteUser);
 //update User by Id
-router.get("/user/create", (req, res) => {
-  res.send("/user/create");
-});
+router.put("/user/:id/update", userController.updateUser);
+
 // view user
 
 //login

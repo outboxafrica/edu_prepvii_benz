@@ -1,7 +1,7 @@
 // logic for user
 const createError = require("http-errors");
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcrypt");
 
 const User = require("../Models/user.model");
 
@@ -31,21 +31,105 @@ module.exports.LogIn = async (req, res) => {
       const result = await bcrypt.compare(req.body.password, user.password);
       if (result) {
         // const token = signToken(user);
-        return res.status(200)//.json({ token });
+        return res.status(200); //.json({ token });
       } else {
         return res
           .status(400)
           .json({ error: "Invalid password, retry with correct password!" });
       }
     } else {
-      return res
-        .status(404)
-        .json({ error: "No such user exists!" });
+      return res.status(404).json({ error: "No such user exists!" });
     }
   } catch (err) {
     console.log("Error while loging in: ", err);
     return res.status(500).json({
       error: "Server error occured during login, please try again later!",
     });
+  }
+};
+
+// // update user by Id
+// module.exports.UpdateUser = async (req, res) => {
+//   try {
+//     //check for the User
+//     const user = await User.findOneAndUpdate({ _id: req.userID }, req.body);
+//     return res
+//       .status(200)
+//       .json({ message: "User successfully updated!", user });
+//   } catch (err) {
+//     //throw Error
+//     res.status(404).json({
+//       Error: "Something Went Wrong >>> User of Given ID was Not Found",
+//     });
+//   }
+// };
+
+module.exports.findUserById = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const user = await User.findById(id);
+    // const user = await User.findOne({ _id: id });
+    if (!user) {
+      throw createError(404, "User does not exist.");
+    }
+    res.send(user);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      next(createError(400, "Invalid User id"));
+      return;
+    }
+    next(error);
+  }
+};
+
+module.exports.updateUser = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updates = req.body;
+    const options = { new: true };
+
+    const result = await User.findByIdAndUpdate(id, updates, options);
+    if (!result) {
+      throw createError(404, "User does not exist");
+    }
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      return next(createError(400, "Invalid User Id"));
+    }
+
+    next(error);
+  }
+};
+
+module.exports.deleteUser = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const result = await User.findByIdAndDelete(id);
+    // console.log(result);
+    if (!result) {
+      throw createError(404, "User does not exist.");
+    }
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      next(createError(400, "Invalid User id"));
+      return;
+    }
+    next(error);
+  }
+};
+
+module.exports.getUsers = async (req, res, next) => {
+  try {
+    //   https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
+    const results = await User.find({}, { __v: 0 }).select("-password");
+    res.send(results);
+  } catch (error) {
+    console.log(error.message);
+    next(error);
   }
 };
