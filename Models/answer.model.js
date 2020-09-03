@@ -3,9 +3,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AnswerSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   answer: {
-    type: Text,
+    type: String,
     required: true,
     max: 1000,
   },

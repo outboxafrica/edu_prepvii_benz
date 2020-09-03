@@ -4,9 +4,8 @@ const Schema = mongoose.Schema;
 
 // define schema for questions
 const questionSchema = new Schema({
-  _id: mongoose.Schema.Types.ObjectId,
   question: {
-    type: Text,
+    type: String,
     required: true,
     max: 1000,
   },

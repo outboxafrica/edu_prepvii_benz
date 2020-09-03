@@ -11,6 +11,8 @@ const app = express();
 
 // constants
 const Router = require("./Routes/user.route");
+const question = require('./Routes/question.route')
+const answer = require('./Routes/answer.route')
 
 const PORT = process.env.PORT || 5000;
 
@@ -40,8 +42,9 @@ app.get("/", (req, res) => {
   });
 });
 
-// base route
-app.use("/api/v1/", Router);
+// base route for users
+app.use("/api/v1/", Router, question, answer);
+
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);

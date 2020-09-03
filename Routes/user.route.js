@@ -24,4 +24,7 @@ router.post("/create", userController.createUser);
 
 // view user
 
+//login
+router.post('/login', userController.LogIn)
+
 module.exports = router;
