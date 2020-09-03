@@ -16,9 +16,8 @@ router.post("/user/create", userController.createUser);
 router.delete("/user/:id/delete", userController.deleteUser);
 //update User by Id
 router.put("/user/:id/update", userController.updateUser);
-
 // view user
-
+router.get("/user/:id", userController.findUserById);
 //login
 router.post("/login", userController.LogIn);
 

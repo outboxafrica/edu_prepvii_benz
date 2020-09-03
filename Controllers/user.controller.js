@@ -48,35 +48,27 @@ module.exports.LogIn = async (req, res) => {
   }
 };
 
-// // update user by Id
-// module.exports.UpdateUser = async (req, res) => {
-//   try {
-//     //check for the User
-//     const user = await User.findOneAndUpdate({ _id: req.userID }, req.body);
-//     return res
-//       .status(200)
-//       .json({ message: "User successfully updated!", user });
-//   } catch (err) {
-//     //throw Error
-//     res.status(404).json({
-//       Error: "Something Went Wrong >>> User of Given ID was Not Found",
-//     });
-//   }
-// };
-
 module.exports.findUserById = async (req, res, next) => {
   const id = req.params.id;
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(id).select("-password");
     // const user = await User.findOne({ _id: id });
     if (!user) {
       throw createError(404, "User does not exist.");
+      res.json({
+        status: 404,
+        message: "User Does not Exist",
+      });
     }
     res.send(user);
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
       next(createError(400, "Invalid User id"));
+      res.json({
+        status: 400,
+        Message: "Bad Request, Invalid User Id",
+      });
       return;
     }
     next(error);
@@ -92,6 +84,10 @@ module.exports.updateUser = async (req, res, next) => {
     const result = await User.findByIdAndUpdate(id, updates, options);
     if (!result) {
       throw createError(404, "User does not exist");
+      res.json({
+        status: 404,
+        Message: "Not Foud, User does not exist",
+      });
     }
     res.send(result);
   } catch (error) {
