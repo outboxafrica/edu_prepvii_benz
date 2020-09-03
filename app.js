@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 });
 
 // base route for users
-app.use("/api/v1/", Router);
+app.use("/api/v1/", Router, question, answer);
 
 app.listen(PORT, () => {
   console.log(`Server started at port ${PORT}`);
