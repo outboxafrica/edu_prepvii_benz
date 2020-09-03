@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
 
 // define User schema
@@ -18,6 +18,9 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: true,
+    set: (value) => {
+      return bcrypt.hashSync(value, 10);
+    },
   },
   contact: Number,
 });
