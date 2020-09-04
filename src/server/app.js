@@ -3,6 +3,10 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 
+const Router = require("./Routes/user.route");
+const question = require("./Routes/question.route");
+const answer = require("./Routes/answer.route");
+
 app.use(cors);
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -15,13 +19,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-let Router = (req, res) => {
-  res.json({
-    name: "EDU API",
-    version: "1.0.0",
-  });
-};
-
-app.use("/api/v1", Router);
+app.use("/api/v1", Router, answer, question);
 
 module.exports = app;
