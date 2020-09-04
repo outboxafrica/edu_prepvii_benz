@@ -19,6 +19,6 @@ router.put("/user/:id/update", userController.updateUser);
 // view user
 router.get("/user/:id", userController.findUserById);
 //login
-router.post("/login", userController.LogIn);
+router.post("/auth/login", userController.LogIn);
 
 module.exports = router;

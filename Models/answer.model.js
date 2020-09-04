@@ -8,6 +8,10 @@ const AnswerSchema = new Schema({
     required: true,
     max: 1000,
   },
+  asweredBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   upVote: {
     type: Number,
   },
