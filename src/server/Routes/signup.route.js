@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 const User = require("../models/user");
 const bcryt = require('bcryt');
-
+//signUp 
 router.post('/signup',(res, req, next)=>{
     user.find({
         email:req.body.email
