@@ -30,3 +30,62 @@ module.exports.getQuestions = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.deleteQn = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const result = await Question.findByIdAndDelete(id);
+    // console.log(result);
+    if (!result) {
+      throw createError(404, "Question does not exist.");
+    }
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      next(createError(400, "Invalid Question id"));
+      return;
+    }
+    next(error);
+  }
+};
+
+module.exports.updateQn = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const updates = req.body;
+    const options = { new: true };
+
+    const result = await Question.findByIdAndUpdate(id, updates, options);
+    if (!result) {
+      throw createError(404, "Question does not exist");
+    }
+    res.send(result);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      return next(createError(400, "Invalid Question Id"));
+    }
+
+    next(error);
+  }
+};
+
+module.exports.getQuestionById = async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const question = await Question.findById(id);
+    // const question = await question.findOne({ _id: id });
+    if (!question) {
+      throw createError(404, "question does not exist.");
+    }
+    res.send(question);
+  } catch (error) {
+    console.log(error.message);
+    if (error instanceof mongoose.CastError) {
+      next(createError(400, "Invalid question id"));
+      return;
+    }
+    next(error);
+  }
+};

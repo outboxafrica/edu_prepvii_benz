@@ -3,9 +3,14 @@ const express = require("express");
 const router = express.Router();
 
 const userController = require("../Controllers/user.controller");
-// test route
-router.get("/test", (req, res) => {
-  res.render("index");
+
+//Default Route
+router.get("/", (req, res) => {
+  res.json({
+    name: "edu-api",
+    author: "team-benz",
+    version: "1.0.0",
+  });
 });
 
 //get all users

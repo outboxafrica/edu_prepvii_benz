@@ -35,9 +35,6 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
-app.set("views", "Views");
-app.set("view engine", "hbs");
 
 app.get("/", (req, res) => {
   res.json({
