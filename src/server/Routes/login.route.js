@@ -4,7 +4,7 @@ router.post("/login",(req,res,next)=>{
     User.find({email:req.body.email})
     .exec()
     .then(user=>{
-        if(user.length >=){
+        if(user.length >= 1){
         return res.json({
             message:"mail not found, user doesnt exist"
         });
@@ -32,3 +32,5 @@ router.post("/login",(req,res,next)=>{
         })
     });
 });
+
+module.exports = route;
