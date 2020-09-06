@@ -2,9 +2,9 @@
   "name": "edu-api",
   "version": "1.0.0",
   "description": "EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +20,7 @@
     "amumpaire isaac",
     "sarah Joy"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/outboxafrica/edu_prepvii_benz/issues"
   },
