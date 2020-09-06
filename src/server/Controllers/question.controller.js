@@ -1,6 +1,6 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
-
+const jwt = require("jsonwebtoken");
 const Question = require("../Models/question.model");
 
 // create question
