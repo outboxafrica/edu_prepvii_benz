@@ -4,7 +4,7 @@
   "description": "EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
