@@ -12,7 +12,7 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 const authRoute = require('./server/helpers/validation')
-app.use(express.json())
+app.use(express.json());
 
 
 //Route middleware

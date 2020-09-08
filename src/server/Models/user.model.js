@@ -1,21 +1,33 @@
 // User Model
 const mongoose = require('mongoose')
-
+const bcrypt = require('bcryptjs')
 const userSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        min:2
+    name: {
+        type: String,
+        required: true,
+        max: 100,
     },
-    Email:{
-        type:String,
-        required:true,
-        min:5
+    email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        unique: true,
+        required: "Email address is required",
+        },
+    password: {
+        type: String,
+        required: true,
+        set:(value)=>{
+            return bcrypt.hashSync(value,10)
+        }
+        
+      },
+    contact: Number,
+      answers: {
+        type: Array,
     },
-    Password:{
-        type:String,
-        required:true,
-        min:3
+    questions: {
+        type: Array,
     },
     Date:{
         type:Date,
