@@ -2,15 +2,23 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
+require("dotenv").config();
 const User = require("../Models/user.model");
+const verifyToken = require("../helpers/validation");
 
 // create a user
 module.exports.createUser = async (req, res, next) => {
   try {
     const user = new User(req.body);
     const result = await user.save();
-    res.send(result);
+    const token = jwt.sign({ id: user._id }, process.env.SECRET, {
+      expiresIn: 86400, // expires in 24 hours
+    });
+
+    // res.send(result);
+    res.status(200).send({ auth: true, token: token });
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -31,7 +39,20 @@ module.exports.LogIn = async (req, res) => {
       const result = await bcrypt.compare(req.body.password, user.password);
       if (result) {
         // const token = signToken(user);
-        return res.status(200); //.json({ token });
+        var token = req.headers["x-access-token"];
+        if (!token)
+          return res
+            .status(401)
+            .send({ auth: false, message: "No token provided." });
+        jwt.verify(token, process.env.SECRET, function (err, decoded) {
+          if (err)
+            return res
+              .status(500)
+              .send({ auth: false, message: "Failed to authenticate token." });
+
+          res.status(200).send(decoded);
+        });
+        return res.status(200).json({ token });
       } else {
         return res
           .status(400)
