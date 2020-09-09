@@ -25,15 +25,15 @@ EDU-API is for the EDU Q&A platform where people can ask questions andprovide re
 
 ### **Usage**
 
-`clone` this repository.
+- `clone` this repository.
 
-`cd` into project root directory.
+- `cd` into project root directory.
 
-run `npm install` to install all dependencies. (you must have [pre-requisites](#pre-requisites))
+- run `npm install` to install all dependencies. (you must have [pre-requisites](#pre-requisites))
 
-Run `npm start` to start the server.
+- Run `npm start` to start the server.
 
-Open up `Postman` and then test out the Endpoints.
+- Open up `Postman` and then test out the Endpoints.
 
 ##### **Pre-requisites**
 
