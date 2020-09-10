@@ -48,7 +48,7 @@ Adds in a new single user into the Application.
 
 | End Point             | Method | Params | Data Type |
 | --------------------- | ------ | ------ | --------- |
-| `/api/v1/user/create` | POST   | `none` | `none`    |
+| `/api/v1/auth/signup` | POST   | `none` | `none`    |
 
 - **Request Body**
 
@@ -73,9 +73,35 @@ Adds in a new single user into the Application.
 ```json
 {
   "Message": "User account succesfully created!",
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNTc2OTlmM2U4NjFjMDAxNzBhNTFhMSIsImlhdCI6MTU5OTU2NDE5MSwiZXhwIjoxNTk5NjUwNTkxfQ.Hkp5ruXBMYdJ4pYdQCIJbKfB5PU6hdss5lEXehtNGUc"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+  eyJpZCI6IjVmNTc2OTlmM2U4NjFjMDAxNzBhNTFhMSIsImlhdCI6MTU5OTU2NDE5MSwiZXhwIjoxNTk5NjUwNTkxfQ.
+  Hkp5ruXBMYdJ4pYdQCIJbKfB5PU6hdss5lEXehtNGUc"
 }
 ```
+- **Error Response** 
+```json
+{
+status: 422
+message: an error occured
+}
+```
+### **Login User**
+Logs in a single user into the Application
+| End Point             | Method | Params | Data Type |
+| --------------------- | ------ | ------ | --------- |
+| `/api/v1/auth/login` | POST   | `none` | `none`    |
+
+- **Request Body**
+
+```json
+{
+  "username": "testuser",
+  "password": "password"
+}
+```
+- **Request Headers**
+`x-access-token: xxxxxxxxxxxxxxx`
+
 
 ### **Contributors**
 
