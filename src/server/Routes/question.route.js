@@ -4,16 +4,16 @@ const router = express.Router();
 const questionController = require("../Controllers/question.controller");
 
 //create a question
-router.post("/question/create", questionController.createQn);
+router.post("/questions", questionController.createQn);
 
 //delete question
-router.delete("/question/:id/delete", questionController.deleteQn);
+router.delete("/questions/:id", questionController.deleteQn);
 // update/edit question
-router.put("/question/:id/update", questionController.updateQn);
+router.put("/questions/:id", questionController.updateQn);
 //get questions
-router.get("/questions/", questionController.getQuestions);
+router.get("/questions", questionController.getQuestions);
 
 // get question by Id
-router.get("/question/:id", questionController.getQuestionById);
+router.get("/questions/:id", questionController.getQuestionById);
 
 module.exports = router;
