@@ -81,8 +81,8 @@ Adds in a new single user into the Application.
 - **Error Response** 
 ```json
 {
-status: 422
-message: an error occured
+"status": 422
+"message": "an error occured"
 }
 ```
 ### **Login User**
