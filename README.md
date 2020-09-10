@@ -81,7 +81,7 @@ Adds in a new single user into the Application.
 - **Error Response** 
 ```json
 {
-"status": 422
+"status": 422,
 "message": "an error occured"
 }
 ```
@@ -100,6 +100,7 @@ Logs in a single user into the Application
 }
 ```
 - **Request Headers**
+
 `x-access-token: xxxxxxxxxxxxxxx`
 
 
