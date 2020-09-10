@@ -16,11 +16,11 @@ router.get("/", (req, res) => {
 //get all users
 router.get("/users", userController.getUsers);
 //create User
-router.post("/user/create", userController.createUser);
+router.post("/auth/signup", userController.createUser);
 //delete user by Id
-router.delete("/user/:id/delete", userController.deleteUser);
+router.delete("/user/:id", userController.deleteUser);
 //update User by Id
-router.put("/user/:id/update", userController.updateUser);
+router.put("/user/:id", userController.updateUser);
 // view user
 router.get("/user/:id", userController.findUserById);
 //login
