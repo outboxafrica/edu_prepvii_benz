@@ -8,7 +8,7 @@ module.exports.createAns = async (req, res, next) => {
   try {
     const answer = new Answer(req.body);
     const result = await answer.save();
-    res.send(result);
+    res.status(200).send({ message: "Answered to the question successfully" });
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -25,11 +25,11 @@ module.exports.getAnsById = async (req, res, next) => {
     const answer = await Answer.findById(id);
     // const answer = await Answer.findOne({ _id: id });
     if (!answer) {
-      throw createError(404, "answer does not exist.");
+      res.status(404).send({ message: " Answer does not exisit " });
+    } else {
+      res.status(200).send(answer);
     }
-    res.send(answer);
   } catch (error) {
-    console.log(error.message);
     if (error instanceof mongoose.CastError) {
       next(createError(400, "Invalid answer id"));
       return;
@@ -55,9 +55,9 @@ module.exports.deleteAns = async (req, res, next) => {
     const result = await Answer.findByIdAndDelete(id);
     // console.log(result);
     if (!result) {
-      throw createError(404, "Answer does not exist.");
+      res.status(404).send({ message: "Answer does not exist." });
     }
-    res.send(result);
+    res.send({ message: "Answer deleted Sucessfully " });
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
@@ -76,7 +76,7 @@ module.exports.updateAns = async (req, res, next) => {
 
     const result = await Answer.findByIdAndUpdate(id, updates, options);
     if (!result) {
-      throw createError(404, "Answer does not exist");
+      res.status(404).send({ message: "Answer does not exist." });
     }
     res.send(result);
   } catch (error) {
