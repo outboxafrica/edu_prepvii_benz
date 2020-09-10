@@ -37,9 +37,9 @@ module.exports.deleteQn = async (req, res, next) => {
     const result = await Question.findByIdAndDelete(id);
     // console.log(result);
     if (!result) {
-      throw createError(404, "Question does not exist.");
+      res.status(404).json({ message: "Question does not exist" });
     }
-    res.send(result);
+    res.send({ message: "Question successfully deleted" });
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
