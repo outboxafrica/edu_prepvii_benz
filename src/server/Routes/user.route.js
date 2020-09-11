@@ -27,3 +27,4 @@ router.get("/user/:id", userController.findUserById);
 router.post("/auth/login", userController.LogIn);
 
 module.exports = router;
+

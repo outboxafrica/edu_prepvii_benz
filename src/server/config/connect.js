@@ -1,3 +1,4 @@
+
 //credit : https://github.com/outboxafrica/edu_lookbook
 
 require("dotenv").config();
@@ -44,3 +45,4 @@ function establishConnection() {
 establishConnection();
 const db = mongoose.connection;
 module.exports = db;
+

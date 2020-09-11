@@ -16,9 +16,11 @@ module.exports.createUser = async (req, res, next) => {
     const token = jwt.sign({ id: user._id }, process.env.SECRET, {
       expiresIn: 86400, // expires in 24 hours
     });
-
-    // res.send(result);
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({
+      auth: true,
+      token: token,
+      message: "User created successfully",
+    });
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -44,15 +46,14 @@ module.exports.LogIn = async (req, res) => {
           return res
             .status(401)
             .send({ auth: false, message: "No token provided." });
-        jwt.verify(token, process.env.SECRET, function (err, decoded) {
+        jwt.verify(token, process.env.SECRET, function (err, message) {
           if (err)
             return res
               .status(500)
               .send({ auth: false, message: "Failed to authenticate token." });
 
-          res.status(200).send(decoded);
+          res.status(200).send(message);
         });
-        return res.status(200).json({ token });
       } else {
         return res
           .status(400)
@@ -75,7 +76,6 @@ module.exports.findUserById = async (req, res, next) => {
     const user = await User.findById(id).select("-password");
     // const user = await User.findOne({ _id: id });
     if (!user) {
-      throw createError(404, "User does not exist.");
       res.json({
         status: 404,
         message: "User Does not Exist",
@@ -85,7 +85,6 @@ module.exports.findUserById = async (req, res, next) => {
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
-      next(createError(400, "Invalid User id"));
       res.json({
         status: 400,
         Message: "Bad Request, Invalid User Id",
@@ -104,7 +103,6 @@ module.exports.updateUser = async (req, res, next) => {
 
     const result = await User.findByIdAndUpdate(id, updates, options);
     if (!result) {
-      throw createError(404, "User does not exist");
       res.json({
         status: 404,
         Message: "Not Foud, User does not exist",
@@ -127,7 +125,10 @@ module.exports.deleteUser = async (req, res, next) => {
     const result = await User.findByIdAndDelete(id);
     // console.log(result);
     if (!result) {
-      throw createError(404, "User does not exist.");
+      res.json({
+        status: 404,
+        Message: "Not Foud, User does not exist",
+      });
     }
     res.send(result);
   } catch (error) {
