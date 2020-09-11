@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const cors = require("cors");
 const app = express();
-const signUpRoutes = require('./api/routes/signup');
-app.use(cors);
+
+const Router = require("./Routes/user.route");
+const question = require("./Routes/question.route");
+const answer = require("./Routes/answer.route");
+
+
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -15,7 +18,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/api/v1", Router);
-app.use("/api/v1",signupRouter);
+
+app.use("/api/v1/", Router, answer, question);
+
 
 module.exports = app;
