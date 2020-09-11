@@ -1,36 +1,12 @@
-const express = require('express')
+require("dotenv").config();
+//require db connections
+require("./server/config/connect");
+//require app
+const app = require("./server/app");
 
-const mongoose = require('mongoose')
+const PORT = process.env.PORT || 5000;
 
-const app = express()
-
-
-const bodyParser = require('body-parser')
-
-const dotenv = require('dotenv')
-
-dotenv.config()
-
-const authRoute = require('./server/helpers/validation')
-app.use(express.json());
-
-
-//Route middleware
-app.use('/api/user', authRoute)
-
-app.get('/',(req,res)=>{
-  res.send('home')
-})
-
-//MIDDLEWARE
-
-app.listen(3002,()=>{
-  console.log('running on port 3002')
-})
-
-//connect to DB
-mongoose.connect(process.env.NODE_ENV,
-  { useNewUrlParser: true, 
-    useUnifiedTopology: true  },
-  ()=>{console.log('connected to db'),
-  {}})
+app.listen(PORT, () => {
+  console.log(`Using environment: ${process.env.NODE_ENV}`);
+  console.log(`Server successfully started and listening on port ${PORT}`);
+});
