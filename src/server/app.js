@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
-
+const signUpRoutes = require('./api/routes/signup');
 app.use(cors);
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
@@ -16,5 +16,6 @@ app.use(function (req, res, next) {
 });
 
 app.use("/api/v1", Router);
+app.use("/api/v1",signupRouter);
 
 module.exports = app;
