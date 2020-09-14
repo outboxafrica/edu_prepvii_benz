@@ -9,11 +9,11 @@
 
 <br>
 
-### **Project Overview**
+## **Project Overview**
 
 EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.
 
-### Environment Variables
+## Environment Variables
 
 **PORT** -- `server port number`
 
@@ -23,7 +23,7 @@ EDU-API is for the EDU Q&A platform where people can ask questions andprovide re
 
 **NODE_ENV** -- `Specifies the Server environment (development, local, production)`
 
-### **Usage**
+## **Usage**
 
 - `clone` this repository.
 
@@ -35,14 +35,14 @@ EDU-API is for the EDU Q&A platform where people can ask questions andprovide re
 
 - Open up `Postman` and then test out the Endpoints.
 
-##### **Pre-requisites**
+## **Pre-requisites**
 
 - [Node Js](https://nodejs.org/en/download/)
 - [Mongo DB](https://www.mongodb.com/try/download/community)
 
-### **User CRUD Operations**
+## **User CRUD Operations**
 
-#### Create a User
+## Create a User
 
 Adds in a new single user into the Application.
 
@@ -77,7 +77,7 @@ Adds in a new single user into the Application.
 }
 ```
 
-### **Contributors**
+## **Contributors**
 
 1. [Iden](https://github.com/kallyas)
 2. [Dipan](https://github.com/diphan-source)
@@ -86,10 +86,10 @@ Adds in a new single user into the Application.
 5. [S. Samuel](https://github.com/ssendisamuel)
 6. [S. Akullu](https://github.com/sarahakullu)
 
-### **Leading Facilitator**
+## **Leading Facilitator**
 
 [David Buyinza](https://github.com/davidgoodson)
 
-### License
+## License
 
 [MIT](/LICENSE)
