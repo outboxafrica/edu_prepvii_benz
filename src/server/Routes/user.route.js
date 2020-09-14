@@ -1,25 +1,30 @@
 // user Routes
-const express = require('express');
+const express = require("express");
+const router = express.Router();
 
-const router = express.router();
+const userController = require("../Controllers/user.controller");
 
-const usercontroller = require("../controllers/user.controller");
-
-router.get('/',(req,res)=>{
-    res.json({
-        message:"this route is working",
-    });
+//Default Route
+router.get("/", (req, res) => {
+  res.json({
+    name: "edu-api",
+    author: "team-benz",
+    version: "1.0.0",
+  });
 });
 
-//create user
-router.post('/create',Usercontroller.Usercreate);
-
-//get user details
-router.get('/',Usercontroller.Userdetails);
-
-//update user details
-router.put('/update',Usercontroller.Userupdate);
+//get all users
+router.get("/users", userController.getUsers);
+//create User
+router.post("/auth/signup", userController.createUser);
+//delete user by Id
+router.delete("/user/:id", userController.deleteUser);
+//update User by Id
+router.put("/user/:id", userController.updateUser);
+// view user
+router.get("/user/:id", userController.findUserById);
+//login
+router.post("/auth/login", userController.LogIn);
 
 module.exports = router;
-
 

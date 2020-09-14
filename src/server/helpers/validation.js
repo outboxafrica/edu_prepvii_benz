@@ -1,26 +1,19 @@
-const router = require('express').Router();
 
-const User = require('../Models/user.model')
-const bodyParser = require('body-parser')
+require("dotenv").config();
 
- 
-router.post('/register',async(req,res)=>{
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password:req.body.password
-    })
-    try{
-        const savedUser = await user.save();
-        res.send(savedUser)
+const jwt = require("jsonwebtoken");
 
-    }catch(err){
-        res.status(400).send(err)
-    }
-    
-})
-router.post('/login',(req,res)=>{
-    res.send('login')
-})
+module.exports.verifyToken = (req, res) => {
+  var token = req.headers["x-access-token"];
+  if (!token)
+    return res.status(401).send({ auth: false, message: "No token provided." });
+  jwt.verify(token, process.env.SECRET, function (err, decoded) {
+    if (err)
+      return res
+        .status(500)
+        .send({ auth: false, message: "Failed to authenticate token." });
 
-module.exports= router
+    res.status(200).send(decoded);
+  });
+};
+

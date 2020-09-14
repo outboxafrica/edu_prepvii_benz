@@ -4,8 +4,11 @@
   "description": "EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+   "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
@@ -28,7 +31,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.20.0",
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
@@ -36,6 +39,7 @@
     "express": "^4.17.1",
     "hash": "^0.2.1",
     "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.2",
     "nodemon": "^2.0.4"
   }

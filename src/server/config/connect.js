@@ -1,16 +1,48 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
 
-let mongoDB = process.env.NODE_ENV;
+//credit : https://github.com/outboxafrica/edu_lookbook
 
-mongoose.connect(mongoDB,{
-    useNewUrlParser: true,
+require("dotenv").config();
+const mongoose = require("mongoose");
+const { DEVELOPMENT, PRODUCTION, LOCAL } = require("./envTypes");
+
+let DB_URL;
+switch (process.env.NODE_ENV) {
+  case DEVELOPMENT:
+    DB_URL = process.env.DB_URL_DEV;
+    break;
+  case PRODUCTION:
+    DB_URL = process.env.DB_URL_PROD;
+    break;
+  case LOCAL:
+    DB_URL = process.env.DB_URL_LOC;
+    break;
+  default:
+    DB_URL = process.env.DB_URL;
+}
+
+const options = {
+  useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
-});
+  useCreateIndex: true,
+};
 
-mongoose.Promise = global.promise;
+function establishConnection() {
+  console.log("\nEstablishing Database Connection . . . ");
+  mongoose
+    .connect(DB_URL, options)
+    .then(() => {
+      console.info("\nDatabase Connection Established!");
+    })
+    .catch((err) => {
+      console.log("\nDatabase Connection Failed!");
+      console.error("Error Details: ", err);
+      console.log("\n\nDatabase Connection Failed, Retrying . . .");
+      establishConnection();
+    });
+}
 
-let db = mongoose.connection;
+establishConnection();
+const db = mongoose.connection;
+module.exports = db;
 
-db.on('error',console.error.bind(console,'connection error'));
