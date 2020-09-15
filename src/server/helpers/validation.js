@@ -1,36 +1,23 @@
-// module.exports.verifyToken = (req, res, next) => {
-//   // Get auth header value
-//   const bearerHeader = req.headers["authorization"];
-//   // Check if bearer is undefined
-//   if (typeof bearerHeader !== "undefined") {
-//     // Split at the space
-//     const bearer = bearerHeader.split(" ");
-//     // Get token from array
-//     const bearerToken = bearer[1];
-//     // Set the token
-//     req.token = bearerToken;
-//     // Next middleware
-//     next();
-//   } else {
-//     // Forbidden
-//     res.sendStatus(403);
-//   }
-// };
+const joi = require("joi");
 
-require("dotenv").config();
-
-const jwt = require("jsonwebtoken");
-
-module.exports.verifyToken = (req, res) => {
-  var token = req.headers["x-access-token"];
-  if (!token)
-    return res.status(401).send({ auth: false, message: "No token provided." });
-  jwt.verify(token, process.env.SECRET, function (err, decoded) {
-    if (err)
-      return res
-        .status(500)
-        .send({ auth: false, message: "Failed to authenticate token." });
-
-    res.status(200).send(decoded);
+// validate signup fields
+const signUpCheck = (data) => {
+  const validateSchema = joi.object({
+    username: joi.string().min(4).required(),
+    email: joi.string().min(4).required().email(),
+    password: joi.string().min(4).required(),
   });
+  return validateSchema.validate(data);
 };
+
+//validate login fields
+const loginCheck = (data) => {
+  const validateSchema = joi.object({
+    email: joi.string().min(4).required(),
+    password: joi.string().min(4).required(),
+  });
+  return validateSchema.validate(data);
+};
+
+module.exports.signUpCheck = signUpCheck;
+module.exports.loginCheck = loginCheck;
