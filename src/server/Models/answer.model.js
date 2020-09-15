@@ -12,6 +12,10 @@ const AnswerSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Question",
+  },
   upVote: {
     type: Number,
   },
@@ -21,4 +25,3 @@ const AnswerSchema = new Schema({
 });
 
 module.exports = mongoose.model("answer", AnswerSchema);
-

@@ -1,5 +1,4 @@
 const joi = require("joi");
-
 // validate signup fields
 const signUpCheck = (data) => {
   const validateSchema = joi.object({
@@ -21,3 +20,4 @@ const loginCheck = (data) => {
 
 module.exports.signUpCheck = signUpCheck;
 module.exports.loginCheck = loginCheck;
+
