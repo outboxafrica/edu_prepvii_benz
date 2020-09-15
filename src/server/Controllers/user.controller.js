@@ -6,21 +6,33 @@ const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
 const User = require("../Models/user.model");
-const verifyToken = require("../helpers/validation");
+const { signUpCheck, loginCheck } = require("../helpers/validation");
 
 // create a user
 module.exports.createUser = async (req, res, next) => {
   try {
+    const { error } = signUpCheck(req.body);
+    if (error)
+      return res.status(400).send({ message: error.details[0].message });
+
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser)
+      return res.status(400).send({ message: "Username already taken! " });
+
+    const existingEmail = await User.findOne({ email: req.body.email });
+    if (existingEmail) {
+      return res.status(400).send({ message: "Email already exists" });
+    }
     const user = new User(req.body);
     const result = await user.save();
     const token = jwt.sign({ id: user._id }, process.env.SECRET, {
       expiresIn: 86400, // expires in 24 hours
     });
-    res.status(200).send({
-      auth: true,
-      token: token,
-      message: "User created successfully",
-    });
+    // res.send(result);
+    res
+      .status(200)
+      .send({ message: "User created successfully", token: token });
+
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -35,6 +47,11 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.LogIn = async (req, res) => {
   try {
     //check whether the user exits
+    const { error } = loginCheck(req.body);
+    if (error) {
+      return res.status(400).send({ message: error.details[0].message });
+    }
+
     const user = await User.findOne({ username: req.body.username });
     if (user) {
       //compare passwords using Bcrypt
