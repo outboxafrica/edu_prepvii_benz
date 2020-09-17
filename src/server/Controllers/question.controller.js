@@ -9,7 +9,7 @@ module.exports.createQn = async (req, res, next) => {
     if (!req.body) return res.json({ error: "Missing Fields " });
     const question = new Question(req.body);
     const result = await question.save();
-    res.send(result);
+    res.status(200).send({ message: "question created successfully" });
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -58,9 +58,9 @@ module.exports.updateQn = async (req, res, next) => {
 
     const result = await Question.findByIdAndUpdate(id, updates, options);
     if (!result) {
-      throw createError(404, "Question does not exist");
+      res.status(404).send({ message: "Question does not exist" });
     }
-    res.send(result);
+    res.status(200).send({ message: " question successfully updated" });
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
@@ -77,9 +77,9 @@ module.exports.getQuestionById = async (req, res, next) => {
     const question = await Question.findById(id);
     // const question = await question.findOne({ _id: id });
     if (!question) {
-      throw createError(404, "question does not exist.");
+      res.status(404).send({ message: "Question Not found" });
     }
-    res.send(question);
+    res.status(200).send(question);
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
