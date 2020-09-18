@@ -38,9 +38,12 @@ const UserSchema = new Schema({
   answers: {
     type: Array,
   },
-  questions: {
-    type: Array,
-  },
+  questions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "question",
+    },
+  ],
 });
 
 // create search index
