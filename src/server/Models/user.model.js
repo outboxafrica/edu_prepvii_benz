@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const Schema = mongoose.Schema;
@@ -43,5 +42,8 @@ const UserSchema = new Schema({
     type: Array,
   },
 });
+
+// create search index
+UserSchema.index({ "$**": "text" });
 
 module.exports = mongoose.model("User", UserSchema);

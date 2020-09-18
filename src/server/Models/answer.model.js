@@ -24,4 +24,6 @@ const AnswerSchema = new Schema({
   },
 });
 
+AnswerSchema.index({ "$**": "text" });
+
 module.exports = mongoose.model("answer", AnswerSchema);

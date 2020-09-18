@@ -33,4 +33,6 @@ const questionSchema = new Schema({
   },
 });
 
+questionSchema.index({ "$**": "text" });
+
 module.exports = mongoose.model("question", questionSchema);
