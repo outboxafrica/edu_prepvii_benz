@@ -41,7 +41,7 @@
     "http-errors": "^1.8.0",
     "joi": "^17.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.10.2",
+    "mongoose": "^5.10.6",
     "nodemon": "^2.0.4"
   }
 }
