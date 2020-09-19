@@ -22,7 +22,7 @@ module.exports.createQn = async (req, res, next) => {
 
 module.exports.getQuestions = async (req, res, next) => {
   try {
-    const result = await Question.find({}, { __v: 0 });
+    const result = await Question.find({}, { __v: 0 }).populate("User");
     if (!result) return res.json({ error: 404, message: "Not Found" });
     res.send(result);
   } catch (error) {

@@ -47,3 +47,45 @@ module.exports.searchAnswer = async (req, res, next) => {
     next(error);
   }
 };
+
+module.exports.searchUsers = async (req, res, next) => {
+  try {
+    const searchTerm = req.body.search;
+    let results = await User.find({ $text: { $search: searchTerm } });
+    if (!results.length) {
+      res.status(404).send({ message: "No results found! " });
+    } else {
+      res.status(200).send({ results: results });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.searchAnswers = async (req, res, next) => {
+  try {
+    const searchTerm = req.body.search;
+    let results = await Answer.find({ $text: { $search: searchTerm } });
+    if (!results.length) {
+      res.status(404).send({ message: "No results found! " });
+    } else {
+      res.status(200).send({ results: results });
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.searchQns = async (req, res, next) => {
+  try {
+    const searchTerm = req.body.search;
+    let results = await Question.find({ $text: { $search: searchTerm } });
+    if (!results.length) {
+      res.status(404).send({ message: "No results found! " });
+    } else {
+      res.status(200).send({ results: results });
+    }
+  } catch (error) {
+    next(error);
+  }
+};

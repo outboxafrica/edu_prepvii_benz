@@ -32,7 +32,6 @@ module.exports.createUser = async (req, res, next) => {
     res
       .status(200)
       .send({ message: "User created successfully", token: token });
-
   } catch (error) {
     console.log(error.message);
     if (error.name === "ValidationError") {
@@ -161,7 +160,9 @@ module.exports.deleteUser = async (req, res, next) => {
 module.exports.getUsers = async (req, res, next) => {
   try {
     //   https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
-    const results = await User.find({}, { __v: 0 }).select("-password");
+    const results = await User.find({}, { __v: 0 })
+      .select("-password")
+      .populate("questions");
     res.send(results);
   } catch (error) {
     console.log(error.message);
