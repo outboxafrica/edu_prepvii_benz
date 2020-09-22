@@ -43,50 +43,6 @@ module.exports.createUser = async (req, res, next) => {
   }
 };
 
-// // login user
-// module.exports.LogIn = async (req, res) => {
-//   try {
-//     //check whether the user exits
-//     const { error } = loginCheck(req.body);
-//     if (error) {
-//       return res.status(400).send({ message: error.details[0].message });
-//     }
-
-//     const user = await User.findOne({ username: req.body.username });
-//     if (user) {
-//       //compare passwords using Bcrypt
-//       const result = await bcrypt.compare(req.body.password, user.password);
-//       if (result) {
-//         // const token = signToken(user);
-//         var token = req.headers["x-access-token"];
-//         if (!token)
-//           return res
-//             .status(401)
-//             .send({ auth: false, message: "No token provided." });
-//         jwt.verify(token, process.env.SECRET, function (err, message) {
-//           if (err)
-//             return res
-//               .status(500)
-//               .send({ auth: false, message: "Failed to authenticate token." });
-
-//           res.status(200).send(message);
-//         });
-//       } else {
-//         return res
-//           .status(400)
-//           .json({ error: "Invalid password, retry with correct password!" });
-//       }
-//     } else {
-//       return res.status(404).json({ error: "No such user exists!" });
-//     }
-//   } catch (err) {
-//     console.log("Error while loging in: ", err);
-//     return res.status(500).json({
-//       error: "Server error occured during login, please try again later!",
-//     });
-//   }
-// };
-
 module.exports.findUserById = async (req, res, next) => {
   const id = req.params.id;
   try {
