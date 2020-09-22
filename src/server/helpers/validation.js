@@ -12,7 +12,7 @@ const signUpCheck = (data) => {
 //validate login fields
 const loginCheck = (data) => {
   const validateSchema = joi.object({
-    email: joi.string().min(4).required(),
+    username: joi.string().min(4).required(),
     password: joi.string().min(4).required(),
   });
   return validateSchema.validate(data);
@@ -20,4 +20,3 @@ const loginCheck = (data) => {
 
 module.exports.signUpCheck = signUpCheck;
 module.exports.loginCheck = loginCheck;
-
