@@ -78,18 +78,22 @@ Adds in a new single user into the Application.
   Hkp5ruXBMYdJ4pYdQCIJbKfB5PU6hdss5lEXehtNGUc"
 }
 ```
-- **Error Response** 
+
+- **Error Response**
+
 ```json
 {
-"status": 422,
-"message": "an error occured"
+  "status": 422,
+  "message": "an error occured"
 }
 ```
+
 ### **Login User**
+
 Logs in a single user into the Application
-| End Point             | Method | Params | Data Type |
+| End Point | Method | Params | Data Type |
 | --------------------- | ------ | ------ | --------- |
-| `/api/v1/auth/login` | POST   | `none` | `none`    |
+| `/api/v1/auth/login` | POST | `none` | `none` |
 
 - **Request Body**
 
@@ -99,10 +103,46 @@ Logs in a single user into the Application
   "password": "password"
 }
 ```
+
+- **Response Body**
+
+```json
+{
+  "message": "logged In",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  .eyJ1c2VybmFtZSI6ImthbGx5IiwicGFzc3dvcmQiOiJwYXNzd29yZCIsImlhdCI6MTYwMDc4Mjc3MywiZXhwIjoxNjAwODY5MTczfQ
+  .TfG4lq7AZtWU6ES332_boK6eGdiexPH7eb3IxhXVL2k"
+}
+```
+
+**Validation Errors**
+
+```json
+{
+  "message": "\"username\" is required"
+}
+```
+
+```json
+{
+  "message": "\"password\" is required"
+}
+```
+
+### Get User By ID
+
+Returns a single user by their Id
+| End Point | Method | Params | Data Type |
+| --------------------- | ------ | ------ | --------- |
+| `/api/v1/user/:id` | GET | `none` | `none` |
+
 - **Request Headers**
 
-`x-access-token: xxxxxxxxxxxxxxx`
+`{ Authorisation: Bearer Token}`
 
+- **Response Body**
+
+Returns user object
 
 ### **Contributors**
 
