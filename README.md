@@ -9,40 +9,40 @@
 
 <br>
 
-### **Project Overview**
+## **Project Overview**
 
 EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.
 
-### Environment Variables
+## Environment Variables
 
-**PORT** -- `server port number`
+- **PORT** -- `server port number`
 
-**DB_URL** -- `database URL`
+- **DB_URL** -- `database URL`
 
-**SECRET** -- `Secret key for verifying the token`
+- **SECRET** -- `Secret key for verifying the token`
 
-**NODE_ENV** -- `Specifies the Server environment (development, local, production)`
+- **NODE_ENV** -- `Specifies the Server environment (development, local, production)`
 
 ### **Usage**
 
-`clone` this repository.
+- `clone` this repository.
 
-`cd` into project root directory.
+- `cd` into project root directory.
 
-run `npm install` to install all dependencies. (you must have [pre-requisites](#pre-requisites))
+- run `npm install` to install all dependencies. (you must have [pre-requisites](#pre-requisites))
 
-Run `npm start` to start the server.
+- Run `npm start` to start the server.
 
-Open up `Postman` and then test out the Endpoints.
+- Open up `Postman` and then test out the Endpoints.
 
-##### **Pre-requisites**
+## **Pre-requisites**
 
 - [Node Js](https://nodejs.org/en/download/)
 - [Mongo DB](https://www.mongodb.com/try/download/community)
 
-### **User CRUD Operations**
+## **User CRUD Operations**
 
-#### Create a User
+## Create a User
 
 Adds in a new single user into the Application.
 
@@ -88,12 +88,13 @@ Adds in a new single user into the Application.
 }
 ```
 
-### **Login User**
+# **Login User**
 
 Logs in a single user into the Application
-| End Point | Method | Params | Data Type |
+
+| End Point             | Method | Params | Data Type |
 | --------------------- | ------ | ------ | --------- |
-| `/api/v1/auth/login` | POST | `none` | `none` |
+| `/api/v1/auth/login`  | POST   | `none` | `none`    |
 
 - **Request Body**
 
@@ -115,32 +116,31 @@ Logs in a single user into the Application
 }
 ```
 
-**Validation Errors**
 
+- **Validation Error Response for Email Missing field**
 ```json
 {
   "message": "\"username\" is required"
 }
 ```
-
+- **validation Error Response for Password Missing field**
 ```json
 {
-  "message": "\"password\" is required"
+  "message": "\"email\" is required"
 }
 ```
 
-### Get User By ID
+# Get User By ID
 
 Returns a single user by their Id
-| End Point | Method | Params | Data Type |
+
+| End Point             | Method | Params | Data Type |
 | --------------------- | ------ | ------ | --------- |
-| `/api/v1/user/:id` | GET | `none` | `none` |
+| `/api/v1/user/:id`    | GET    | `none` | `none`    |
 
 - **Request Headers**
 
 `{ Authorisation: Bearer Token}`
-
-- **Response Body**
 
 Returns user object
 
