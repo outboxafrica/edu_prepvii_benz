@@ -78,13 +78,45 @@ Adds in a new single user into the Application.
   Hkp5ruXBMYdJ4pYdQCIJbKfB5PU6hdss5lEXehtNGUc"
 }
 ```
-- **Error Response** 
+
+- **Error Response**
+
 ```json
 {
-"status": 422,
-"message": "an error occured"
+  "status": 422,
+  "message": "an error occured"
 }
 ```
+
+# **Login User**
+
+Logs in a single user into the Application
+
+| End Point             | Method | Params | Data Type |
+| --------------------- | ------ | ------ | --------- |
+| `/api/v1/auth/login`  | POST   | `none` | `none`    |
+
+- **Request Body**
+
+```json
+{
+  "username": "testuser",
+  "password": "password"
+}
+```
+
+- **Response Body**
+
+```json
+{
+  "message": "logged In",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+  .eyJ1c2VybmFtZSI6ImthbGx5IiwicGFzc3dvcmQiOiJwYXNzd29yZCIsImlhdCI6MTYwMDc4Mjc3MywiZXhwIjoxNjAwODY5MTczfQ
+  .TfG4lq7AZtWU6ES332_boK6eGdiexPH7eb3IxhXVL2k"
+}
+```
+
+
 - **Validation Error Response for Email Missing field**
 ```json
 {
@@ -97,24 +129,20 @@ Adds in a new single user into the Application.
   "message": "\"email\" is required"
 }
 ```
-## **Login User**
-Logs in a single user into the Application
+
+# Get User By ID
+
+Returns a single user by their Id
+
 | End Point             | Method | Params | Data Type |
 | --------------------- | ------ | ------ | --------- |
-| `/api/v1/auth/login` | POST   | `none` | `none`    |
+| `/api/v1/user/:id`    | GET    | `none` | `none`    |
 
-- **Request Body**
-
-```json
-{
-  "username": "testuser",
-  "password": "password"
-}
-```
 - **Request Headers**
 
-`{x-access-token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx}`
+`{ Authorisation: Bearer Token}`
 
+Returns user object
 
 ### **Contributors**
 
