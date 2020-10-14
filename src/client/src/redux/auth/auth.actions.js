@@ -15,23 +15,23 @@ import setAuthToken from './auth.utils';
 const API = `https://api-team-benz.herokuapp.com/api/v1`
 
 // Load User
-// export const loadUser = () => async dispatch => {
-//     if (localStorage.token){
-//         setAuthToken(localStorage.token);
-//     }
-//     try {
-//         const res = await axios.get(`${API}`/auth);
+export const loadUser = () => async dispatch => {
+    if (localStorage.token){
+        setAuthToken(localStorage.token);
+    }
+    try {
+        const res = await axios.get(`${API}/auth`);
 
-//         dispatch({
-//             type: USER_LOADED,
-//             payload: res.data.data
-//         });
-//     } catch (err) {
-//         dispatch({
-//             type: AUTH_ERROR
-//         });
-//     }
-// };
+        dispatch({
+            type: USER_LOADED,
+            payload: res.data.data
+        });
+    } catch (err) {
+        dispatch({
+            type: AUTH_ERROR
+        });
+    }
+};
 
 // Register User
 export const register = ({ username, password }) => async dispatch => {
