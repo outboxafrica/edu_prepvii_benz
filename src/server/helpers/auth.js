@@ -18,9 +18,17 @@ exports.authenticateToken = (req, res, next) => {
     // res.send({ message: "success" });
     next();
   });
-  //   next();
 };
 
 exports.generateAccessToken = (user) => {
   return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 86400 });
+};
+
+exports.checkUser = (req, res, id, next) => {
+  if (!id === req.params.id) {
+    res.status(403).send({
+      message: "you are not allowed to perform this action!",
+    });
+  }
+  next();
 };

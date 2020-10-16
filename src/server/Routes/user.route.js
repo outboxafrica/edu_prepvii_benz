@@ -19,7 +19,12 @@ router.get("/users", userController.getUsers);
 //create User
 router.post("/auth/signup", userController.createUser);
 //delete user by Id
-router.delete("/user/:id", auth.authenticateToken, userController.deleteUser);
+router.delete(
+  "/user/:id",
+  auth.authenticateToken,
+  auth.checkUser,
+  userController.deleteUser
+);
 //update User by Id
 router.put("/user/:id", auth.authenticateToken, userController.updateUser);
 // view user
