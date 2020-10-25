@@ -19,12 +19,10 @@ const questionSchema = new Schema({
     type: Date,
     default: Date.now,
   },
-  comments: [
-    {
-      body: "string",
-      by: mongoose.Schema.Types.ObjectId,
-    },
-  ],
+  answered: {
+    type: Boolean,
+    default: false,
+  },
   upVote: {
     type: Number,
   },
