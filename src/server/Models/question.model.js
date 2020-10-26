@@ -1,4 +1,7 @@
 const mongoose = require("mongoose");
+const voteSchema = require("./vote");
+const commentSchema = require("./comment");
+const answerSchema = require("./answer.model");
 
 const Schema = mongoose.Schema;
 
@@ -15,6 +18,13 @@ const questionSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  title: { type: String, required: true },
+  text: { type: String, required: true },
+  tags: [{ type: String, required: true }],
+  score: { type: Number, default: 0 },
+  votes: [voteSchema],
+  comments: [commentSchema],
+  //   answers: { result: [answerSchema] },
   dateCreated: {
     type: Date,
     default: Date.now,

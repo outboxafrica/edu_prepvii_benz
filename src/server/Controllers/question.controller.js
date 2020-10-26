@@ -1,6 +1,5 @@
 const createError = require("http-errors");
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 const Question = require("../Models/question.model");
 
 // create question
@@ -97,4 +96,27 @@ module.exports.getQuestionById = async (req, res, next) => {
     }
     next(error);
   }
+};
+
+module.exports.vote = (user, vote) => {
+  const existingVote = this.votes.find((v) => v.user._id.equals(user));
+
+  if (existingVote) {
+    // reset score
+    this.score -= existingVote.vote;
+    if (vote == 0) {
+      // remove vote
+      this.votes.pull(existingVote);
+    } else {
+      //change vote
+      this.score += vote;
+      existingVote.vote = vote;
+    }
+  } else if (vote !== 0) {
+    // new vote
+    this.score += vote;
+    this.votes.push({ user, vote });
+  }
+
+  return this.save();
 };

@@ -1,27 +1,20 @@
-// Answer Model
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const voteSchema = require("./vote");
+const commentSchema = require("./comment");
+
 const AnswerSchema = new Schema({
-  answer: {
-    type: String,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "user",
     required: true,
-    max: 1000,
   },
-  answeredBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  questionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Question",
-  },
-  upVote: {
-    type: Number,
-  },
-  downVote: {
-    type: Number,
-  },
+  created: { type: Date, default: Date.now },
+  text: { type: String, required: true },
+  score: { type: Number, default: 0 },
+  votes: [voteSchema],
+  comments: [commentSchema],
 });
 
 AnswerSchema.index({ "$**": "text" });
