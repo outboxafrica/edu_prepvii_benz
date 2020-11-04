@@ -30,7 +30,7 @@ const options = {
 function establishConnection() {
   console.log("\nEstablishing Database Connection . . . ");
   mongoose
-    .connect(DB_URL, options)
+    .connect('mongodb+srv://isaac2019:isaac2019@cluster0.q2hvz.mongodb.net/test2?retryWrites=true&w=majority', options)
     .then(() => {
       console.info("\nDatabase Connection Established!");
     })

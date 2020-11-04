@@ -1,13 +1,221 @@
-body {
+body{
+  font: 15px Helvetica;
+  height:100vh;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+ 
+
+}
+.App{
+  display: grid;
+  grid-template-areas:
+  "header"
+  "main"
+  "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 600px 5rem;
+  height: 100%;
+}
+.header{
+  grid-area: header;
+  background-color:#6fa857;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 20px;
+  align-items: center;
+}
+.header > .signlinks >ul{
+  display: flex;
+  list-style: none;
+}
+.header > .signlinks >ul > li> a{
+  /* background-color: transparent;
+  border: none; */
+  margin-left: 10px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  list-style: none;
+}
+.header > .signlinks >ul > li > a:hover{
+  color: rgb(200, 200, 223);
+  
+}
+.main{
+  grid-area: main;
+}
+.footer{
+  grid-area: footer;
+  background-color:#6fa857;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.footer > a{
+  color: white;
+  text-decoration: none;
+}
+.footer > a:hover{
+      color: rgb(200, 200, 223);
+  
+}
+/* side bar */
+.logo{
+  display: flex;
+  align-items:right;
+}
+.logo button{
+  font-size: 20px;
+  padding: 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.sidebar{
+   position: fixed;
+  transform: translateX(-30rem);
+  width: 10%;
+  background-color: #deebd9;
+  height: 60% ;
+  padding: 10px 0px;
+  color:#6fa857;
+}
+.sidebar.open{
+  transform: translateX(0);
+}
+.sidebarclosebutton{
+  border-radius: 50%;
+  border: 2px solid #8dc6a9;
+  width: 30px;
+  height: 30px;
+  color:#55aa7f;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+ 
+}
+.sidebar > div{
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+}
+.sidebar > div > ul > li > a{
+  text-decoration: none;
+  color:  rgb(42, 42, 82);
+  display: block;
+}
+.sidebar > div > ul > li {
+  list-style: none;
+  padding: 10px;
+  font-weight: bold;
+}
+.sidebar > div > ul > li:hover{
+  background-color: #42893e;
+}
+.sidebar > div > ul > li > a:hover{
+  color: white;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* signuppage */
+.sign{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  
+}
+.signupForm{
+  width: 40%;
+  display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  transform: translateX(-25rem); 
+  margin-bottom: 20px;;
+  
+}
+.signupForm > input{
+  width: 90%;
+ margin-left: 40%;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  color:#8dc6a9;
+}
+.signupForm > input:hover{
+  box-shadow: 2px 2px 5px;
+}
+.signupForm > button{
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  background-color:#54b04f;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+.loginForm{
+  width: 40%;
+  border: 5px solid #54b04f;
+  border-style: groove;
+  display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  border-radius: 10px;
+  padding: 15px;
+  transform: translateX(-25rem);  
+  margin-left: 40%;
+}
+
+.loginForm > input{
+  width: 90%;
+  margin: 10px 0px;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  color: #78c175;
+}
+.loginForm > input:hover{
+  box-shadow: 2px 2px 5px;
+}
+.loginForm > button{
+  width: 20%;
+  padding: 10px;
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #78c175;
+  color: white;
+  font-weight: bold;
+}
+
+/* Home page */
+.homepage{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.homepage > section{
+  text-align: justify;
+ 
+}
+.homepage > section > ul > li{
+  font-size: 17px;
+  line-height: 40px;
+}
+.homepage > section > h2, h3{
+  text-align: center;
 }
