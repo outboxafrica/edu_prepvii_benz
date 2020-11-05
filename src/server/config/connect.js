@@ -1,6 +1,3 @@
-
-//credit : https://github.com/outboxafrica/edu_lookbook
-
 require("dotenv").config();
 const mongoose = require("mongoose");
 const { DEVELOPMENT, PRODUCTION, LOCAL } = require("./envTypes");
@@ -30,7 +27,7 @@ const options = {
 function establishConnection() {
   console.log("\nEstablishing Database Connection . . . ");
   mongoose
-    .connect('mongodb+srv://isaac2019:isaac2019@cluster0.q2hvz.mongodb.net/test2?retryWrites=true&w=majority', options)
+    .connect(DB_URL, options)
     .then(() => {
       console.info("\nDatabase Connection Established!");
     })
@@ -45,4 +42,3 @@ function establishConnection() {
 establishConnection();
 const db = mongoose.connection;
 module.exports = db;
-
