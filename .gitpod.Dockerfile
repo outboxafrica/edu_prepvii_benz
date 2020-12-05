@@ -14,6 +14,6 @@ ENV ZSH_THEME cloud
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN npm i npm -g
 
-RUN wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O - | zsh
+RUN wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | zsh
 
 RUN curl https://cli-assets.heroku.com/install.sh | sh
