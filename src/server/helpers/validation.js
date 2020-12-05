@@ -1,26 +1,22 @@
-const router = require('express').Router();
+const joi = require("joi");
+// validate signup fields
+const signUpCheck = (data) => {
+  const validateSchema = joi.object({
+    username: joi.string().min(4).required(),
+    email: joi.string().min(4).required().email(),
+    password: joi.string().min(4).required(),
+  });
+  return validateSchema.validate(data);
+};
 
-const User = require('../Models/user.model')
-const bodyParser = require('body-parser')
+//validate login fields
+const loginCheck = (data) => {
+  const validateSchema = joi.object({
+    username: joi.string().min(4).required(),
+    password: joi.string().min(4).required(),
+  });
+  return validateSchema.validate(data);
+};
 
- 
-router.post('/register',async(req,res)=>{
-    const user = new User({
-        name: req.body.name,
-        email: req.body.email,
-        password:req.body.password
-    })
-    try{
-        const savedUser = await user.save();
-        res.send(savedUser)
-
-    }catch(err){
-        res.status(400).send(err)
-    }
-    
-})
-router.post('/login',(req,res)=>{
-    res.send('login')
-})
-
-module.exports= router
+module.exports.signUpCheck = signUpCheck;
+module.exports.loginCheck = loginCheck;

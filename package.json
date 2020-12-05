@@ -5,7 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/__test__/test.js"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
@@ -28,15 +31,33 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "axios": "^0.20.0",
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
     "core-util-is": "^1.0.2",
     "cors": "^2.8.5",
+    "debug": "^4.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.2.3",
+    "express-validator": "^6.7.0",
+    "generate-mocha": "^1.0.0",
     "hash": "^0.2.1",
+    "helmet": "^4.2.0",
     "http-errors": "^1.8.0",
-    "mongoose": "^5.10.2",
-    "nodemon": "^2.0.4"
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-decode": "^2.2.0",
+    "mocha": "^8.2.1",
+    "mongoose": "^5.11.4",
+    "morgan": "^1.10.0",
+    "supertest": "^4.0.2"
+  },
+  "devDependencies": {
+    "faker": "^4.1.0",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.6",
+    "prettier": "^2.2.1",
+    "supertest": "^4.0.2"
   }
 }
