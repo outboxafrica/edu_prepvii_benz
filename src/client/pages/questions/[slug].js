@@ -21,7 +21,7 @@ const QuestionDetail = ({ questionId, title }) => {
 
   useEffect(() => {
     const fetchQuestion = async () => {
-      const { data } = await publicFetch.get(`/question/${questionId}`)
+      const { data } = await publicFetch.get(`/questions/${questionId}`)
       setQuestion(data)
     }
 

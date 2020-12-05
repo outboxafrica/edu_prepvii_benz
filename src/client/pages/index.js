@@ -20,7 +20,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchQuestion = async () => {
-      const { data } = await publicFetch.get('/question')
+      const { data } = await publicFetch.get('/questions')
       setQuestions(data)
     }
 
@@ -55,12 +55,20 @@ const HomePage = () => {
     <Layout>
       <Head>
         <title>
-          {router.query.tag ? router.query.tag : 'Questions'} - Clone of
-          Stackoverflow
+          {router.query.tag ? router.query.tag : 'Questions'} - EDU Q & A
+          Plattform
         </title>
       </Head>
 
-      <PageTitle title={router.query.tag ? `Questions tagged [${router.query.tag}]` : 'All Questions'} button borderBottom={false} />
+      <PageTitle
+        title={
+          router.query.tag
+            ? `Questions tagged [${router.query.tag}]`
+            : 'All Questions'
+        }
+        button
+        borderBottom={false}
+      />
 
       <ButtonGroup
         borderBottom
