@@ -4,7 +4,7 @@ USER gitpod
 #Install Google key
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
 
-RUN sudo apt-get  && \
+RUN sudo apt-get update && \
     sudo apt-get install -y zsh
 
 # set the zsh theme 
