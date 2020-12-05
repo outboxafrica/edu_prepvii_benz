@@ -9,6 +9,7 @@ const question = require("./Routes/question.route");
 const answer = require("./Routes/answer.route");
 const search = require("./Routes/search.route");
 const tags = require("./Routes/tags.route");
+const votes = require("./Routes/vote.route");
 const middlewares = require("./middlewares");
 const RateLimit = require("./helpers/rateLimit");
 
@@ -26,7 +27,7 @@ app.use(function (req, res, next) {
 });
 
 app.use(RateLimit);
-app.use("/api/v1/", Router, answer, question, search, tags);
+app.use("/api/v1/", Router, answer, question, search, tags, votes);
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
 

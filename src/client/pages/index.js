@@ -21,6 +21,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchQuestion = async () => {
       const { data } = await publicFetch.get('/questions')
+      console.log(data)
       setQuestions(data)
     }
 
