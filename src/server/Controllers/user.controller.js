@@ -16,7 +16,9 @@ module.exports.createUser = async (req, res, next) => {
     if (error)
       return res.status(400).send({ message: error.details[0].message });
 
-    const existingUser = await User.findOne({ username: req.body.username });
+    const existingUser = await User.findOne({
+      username: req.body.username,
+    });
     if (existingUser)
       return res.status(400).send({ message: "Username already taken! " });
 
@@ -46,7 +48,10 @@ module.exports.createUser = async (req, res, next) => {
 module.exports.findUserById = async (req, res, next) => {
   const id = req.params.id;
   try {
-    const user = await User.findById(id).select("-password");
+    const user = await User.findById(id)
+      .select("-password")
+      .populate("questions")
+      .exec();
     // const user = await User.findOne({ _id: id });
     if (!user) {
       res.json({
@@ -54,7 +59,7 @@ module.exports.findUserById = async (req, res, next) => {
         message: "User Does not Exist",
       });
     }
-    res.send(user);
+    res.status(200).send(user);
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
@@ -102,8 +107,11 @@ module.exports.deleteUser = async (req, res, next) => {
         status: 404,
         Message: "Not Foud, User does not exist",
       });
+    } else {
+      res.status(200).send({
+        message: "User deleted successfuly!",
+      });
     }
-    res.send(result);
   } catch (error) {
     console.log(error.message);
     if (error instanceof mongoose.CastError) {
@@ -119,7 +127,8 @@ module.exports.getUsers = async (req, res, next) => {
     //   https://stackoverflow.com/questions/12096262/how-to-protect-the-password-field-in-mongoose-mongodb-so-it-wont-return-in-a-qu
     const results = await User.find({}, { __v: 0 })
       .select("-password")
-      .populate("questions");
+      .populate("questions")
+      .exec();
     if (!results.length)
       return res.status(404).send({ message: "No users found!" });
     res.send(results);

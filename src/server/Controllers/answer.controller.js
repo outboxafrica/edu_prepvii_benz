@@ -22,10 +22,14 @@ module.exports.createAns = async (req, res, next) => {
 module.exports.getAnsById = async (req, res, next) => {
   const id = req.params.id;
   try {
-    const answer = await Answer.findById(id);
+    const answer = await Answer.findById(id)
+      .populate("answeredBy", "username")
+      .exec();
     // const answer = await Answer.findOne({ _id: id });
     if (!answer) {
-      res.status(404).send({ message: " Answer does not exisit " });
+      res.status(404).send({
+        message: " Answer does not exisit ",
+      });
     } else {
       res.status(200).send(answer);
     }
@@ -40,7 +44,9 @@ module.exports.getAnsById = async (req, res, next) => {
 
 module.exports.getAns = async (req, res, next) => {
   try {
-    const result = await Answer.find({}, { __v: 0 });
+    const result = await Answer.find({}, { __v: 0 })
+      .populate("answeredBy", "username")
+      .exec();
     if (!result) return res.json({ error: 404, message: "Not Found" });
     res.send(result);
   } catch (error) {
