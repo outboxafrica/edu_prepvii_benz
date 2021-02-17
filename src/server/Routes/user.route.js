@@ -1,6 +1,7 @@
 // user Routes
 const express = require("express");
 const router = express.Router();
+require("dotenv").config();
 
 const userController = require("../Controllers/user.controller");
 const auth = require("../helpers/auth");
@@ -8,9 +9,9 @@ const auth = require("../helpers/auth");
 //Default Route
 router.get("/", (req, res) => {
   res.json({
-    name: "edu-api",
-    author: "team-benz",
-    version: "1.0.0",
+    name: process.env.API_NAME,
+    author: process.env.API_TEAM,
+    version: process.env.API_VERSION,
   });
 });
 

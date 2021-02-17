@@ -1,4 +1,4 @@
-export async function upvote(req, res) {
+exports.upvote = async (req, res) => {
   const { id } = req.user;
 
   if (req.answer) {
@@ -8,9 +8,9 @@ export async function upvote(req, res) {
   }
   const question = await req.question.vote(id, 1);
   return res.json(question);
-}
+};
 
-export async function downvote(req, res) {
+exports.downvote = async (req, res) => {
   const { id } = req.user;
 
   if (req.answer) {
@@ -20,9 +20,9 @@ export async function downvote(req, res) {
   }
   const question = await req.question.vote(id, -1);
   return res.json(question);
-}
+};
 
-export async function unvote(req, res) {
+exports.unvote = async (req, res) => {
   const { id } = req.user;
 
   if (req.answer) {
@@ -32,4 +32,4 @@ export async function unvote(req, res) {
   }
   const question = await req.question.vote(id, 0);
   return res.json(question);
-}
+};

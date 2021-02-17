@@ -21,6 +21,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchQuestion = async () => {
       const { data } = await publicFetch.get('/questions')
+      console.log(data)
       setQuestions(data)
     }
 
@@ -56,7 +57,7 @@ const HomePage = () => {
       <Head>
         <title>
           {router.query.tag ? router.query.tag : 'Questions'} - EDU Q & A
-          Plattform
+          Platform
         </title>
       </Head>
 
@@ -89,7 +90,7 @@ const HomePage = () => {
           ({
             id,
             votes,
-            answers,
+            /*answers, */
             views,
             title,
             text,
@@ -100,7 +101,7 @@ const HomePage = () => {
             <QuestionWrapper key={id}>
               <QuestionStats
                 voteCount={votes.length}
-                answerCount={answers.length}
+                /*answerCount={answers.length}*/
                 view={views}
               />
               <QuestionSummary

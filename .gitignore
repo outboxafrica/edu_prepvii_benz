@@ -1,6 +1,7 @@
 requests.rest
 .env
 node_modules/
+api/
 # Logs
 logs
 *.log
