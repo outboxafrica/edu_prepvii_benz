@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "mocha src/__test__/test.js"
+    "test": "mocha --recursive src/server/test"
   },
   "engines": {
     "node": "12.x"
@@ -41,7 +41,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.2.3",
     "express-validator": "^6.7.0",
-    "generate-mocha": "^0.1.12",
+    "generate-mocha": "^1.0.0",
     "hash": "^0.2.1",
     "helmet": "^4.2.0",
     "http-errors": "^1.8.0",

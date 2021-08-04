@@ -10,3 +10,5 @@ app.listen(PORT, () => {
   console.log(`Using environment: ${process.env.NODE_ENV}`);
   console.log(`Server successfully started and listening on port ${PORT}`);
 });
+
+module.exports = app //used for testing purposes
