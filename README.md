@@ -1,4 +1,4 @@
-# EDU API (PREP VII BENZ)
+# EDU API (PREP VII BENZ) [![Run tests](https://github.com/outboxafrica/edu_prepvii_benz/actions/workflows/safe.yml/badge.svg)](https://github.com/outboxafrica/edu_prepvii_benz/actions/workflows/safe.yml)
 
 ## Table Of Contents
 
