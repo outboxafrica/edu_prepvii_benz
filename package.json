@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon src/index.js",
-    "test": "mocha --recursive src/server/test"
+    "test": "mocha --recursive src/server/test --exit"
   },
   "engines": {
     "node": "12.x"
