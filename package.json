@@ -41,7 +41,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.3.0",
     "express-validator": "^6.12.1",
-    "generate-mocha": "^0.1.12",
+    "generate-mocha": "^0.6.0",
     "hash": "^0.2.1",
     "helmet": "^4.6.0",
     "http-errors": "^1.8.0",
