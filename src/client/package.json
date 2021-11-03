@@ -25,7 +25,7 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-tagsinput": "^3.19.0",
-    "slug": "^3.3.2",
+    "slug": "^3.5.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {
