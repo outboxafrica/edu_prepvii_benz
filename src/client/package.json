@@ -22,8 +22,8 @@
     "formik": "^2.2.9",
     "next": "^12.0.2",
     "nprogress": "^0.2.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-tagsinput": "^3.19.0",
     "slug": "^3.5.2",
     "yup": "^0.32.11"
