@@ -39,8 +39,10 @@
     "debug": "^4.3.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-rate-limit": "^5.5.0",
+
     "express-validator": "^6.13.0",
-    "express-rate-limit": "^5.4.1",
+
     "generate-mocha": "^0.6.0",
     "hash": "^0.2.1",
     "helmet": "^4.6.0",
