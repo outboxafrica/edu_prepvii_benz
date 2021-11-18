@@ -30,7 +30,7 @@
   "homepage": "https://github.com/outboxafrica/edu_prepvii_benz#readme",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
-    "axios": "^0.22.0",
+    "axios": "^0.24.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
@@ -39,8 +39,10 @@
     "debug": "^4.3.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "express-validator": "^6.12.2",
-    "express-rate-limit": "^5.4.1",
+    "express-rate-limit": "^5.5.0",
+
+    "express-validator": "^6.13.0",
+
     "generate-mocha": "^0.6.0",
     "hash": "^0.2.1",
     "helmet": "^4.6.0",
@@ -49,7 +51,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mocha": "^8.4.0",
-    "mongoose": "^5.13.10",
+    "mongoose": "^5.13.12",
     "morgan": "^1.10.0",
     "supertest": "^4.0.2"
   },
