@@ -8,7 +8,6 @@
 3. [Contributors](#contributors)
 
 <br>
-
 ## **Project Overview**
 
 EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.
