@@ -51,7 +51,7 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mocha": "^8.4.0",
-    "mongoose": "^5.13.13",
+    "mongoose": "^5.13.14",
     "morgan": "^1.10.0",
     "supertest": "^4.0.2"
   },
