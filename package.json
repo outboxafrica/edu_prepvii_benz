@@ -4,7 +4,7 @@
   "description": "EDU-API is for the EDU Q&A platform where people can ask questions andprovide responses.",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "mocha --recursive src/server/test --exit"
   },
   "engines": {
@@ -41,7 +41,7 @@
     "express": "^4.18.1",
     "express-rate-limit": "^5.5.1",
 
-    "express-validator": "^6.14.1",
+    "express-validator": "^6.14.2",
 
     "generate-mocha": "^0.6.0",
     "hash": "^0.2.1",
