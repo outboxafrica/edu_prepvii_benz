@@ -153,7 +153,11 @@ Returns user object
 5. [S. Samuel](https://github.com/ssendisamuel)
 6. [S. Akullu](https://github.com/sarahakullu)
 
+<<<<<<< HEAD
 ### **Leading Facilitator**
+=======
+### Leading Facilitator
+>>>>>>> b4448af357cc9547d0402bb8baf8dae7ceb2fd90
 
 [David Buyinza](https://github.com/davidgoodson)
 
