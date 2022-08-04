@@ -7,9 +7,6 @@
     "start": "node src/index.js",
     "test": "mocha --recursive src/server/test --exit"
   },
-  "engines": {
-    "node": "12.x"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/outboxafrica/edu_prepvii_benz.git"
