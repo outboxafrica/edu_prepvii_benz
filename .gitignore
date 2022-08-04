@@ -1,3 +1,7 @@
+requests.rest
+.env
+node_modules/
+api/
 # Logs
 logs
 *.log
@@ -39,6 +43,7 @@ build/Release
 
 # Dependency directories
 node_modules/
+heroku/
 jspm_packages/
 
 # TypeScript v1 declaration files
