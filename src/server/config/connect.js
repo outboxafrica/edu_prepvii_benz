@@ -28,30 +28,8 @@ const options = {
   useCreateIndex: true,
 };
 
-function establishConnection() {
-  console.log("\nEstablishing Database Connection . . . ");
-  mongoose
-    .connect(DB_URL, options)
-    .then(() => {
-      console.info("\nDatabase Connection Established!");
-    })
-    .catch((err) => {
-      console.log("\nDatabase Connection Failed!");
-      console.error("Error Details: ", err);
-      console.log("\n\nDatabase Connection Failed, Retrying . . .");
-      
-      // attempt to reconnet for 1 minute. 
-      // if  fails to connect in one minute, cancel connection
-      setTimeout(establishConnection, 60000);
-    }).catch((err) => {
-      console.log("\nDatabase Connection Failed!");
-      console.error("Error Details: ", err);
-    }).finally(() => {
-      console.log("\nDatabase Connection Closed!");
-    })
+async function establishConnection() {
+  return mongoose.connect(DB_URL, options);
 }
-
-establishConnection();
-const db = mongoose.connection;
-module.exports = db;
+module.exports = establishConnection;
 
