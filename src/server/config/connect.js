@@ -25,7 +25,6 @@ switch (process.env.NODE_ENV) {
 
 const options = {
   useNewUrlParser: true,
-  useCreateIndex: true,
 };
 
 async function establishConnection() {
