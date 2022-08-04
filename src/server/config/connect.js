@@ -25,27 +25,10 @@ switch (process.env.NODE_ENV) {
 
 const options = {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true,
 };
 
-function establishConnection() {
-  console.log("\nEstablishing Database Connection . . . ");
-  mongoose
-    .connect(DB_URL, options)
-    .then(() => {
-      console.info("\nDatabase Connection Established!");
-    })
-    .catch((err) => {
-      console.log("\nDatabase Connection Failed!");
-      console.error("Error Details: ", err);
-      console.log("\n\nDatabase Connection Failed, Retrying . . .");
-      establishConnection();
-    });
+async function establishConnection() {
+  return mongoose.connect(DB_URL, options);
 }
-
-establishConnection();
-const db = mongoose.connection;
-module.exports = db;
+module.exports = establishConnection;
 
