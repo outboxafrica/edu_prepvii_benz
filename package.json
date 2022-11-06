@@ -44,10 +44,10 @@
     "hash": "^0.2.1",
     "helmet": "^4.6.0",
     "http-errors": "^1.8.1",
-    "joi": "^17.6.2",
+    "joi": "^17.6.3",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
-    "mongoose": "^6.6.3",
+    "mongoose": "^6.6.5",
     "mocha": "^10.1.0",
     "morgan": "^1.10.0",
     "supertest": "^4.0.2"
