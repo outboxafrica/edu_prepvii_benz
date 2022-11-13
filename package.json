@@ -44,7 +44,7 @@
     "hash": "^0.2.1",
     "helmet": "^4.6.0",
     "http-errors": "^1.8.1",
-    "joi": "^17.6.3",
+    "joi": "^17.6.4",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
     "mongoose": "^6.6.5",
